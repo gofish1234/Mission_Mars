@@ -1,1 +1,59 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class = "row">
+        <h2> Latest Mars News</h2>
+        <h3>{{Mars.Latest_news}}</h3>
+        <p>{{Mars.Latest_paragraph}}</p>
+    </div>
+    <div class="row">
+        <div class= "col-lg-8 col-sm-12">
+            <h2> Featured Mars Image </h2>
+            <img class="featured-image" src="{{Mars.Featured_Image}}"" style="width: 720px; display: block;">
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3> Current Weather on Mars</h3>
+                    {{Mars.Latest_Tweet}}
+                </div>
+            <div class="table-responsive">
+                <table class="table">
+                {{Mars.Mars_Fact|safe}}
+                </table>
+            </div>
+        </div>
+    </div>
+   <br>
+   <div class="row">
+        {% for sphere in Mars.Hemispheres %}
+        <div class="col-md-6 col-sm-12">  
+            <h2> Mars Hemispheres </h2>
+            <div class="card" style="width:100%;">
+                <img class="card-img-top" src={{sphere.img_url}} style="width:90%";>
+                <div class="card-body">
+                    <h4>{{sphere.title}}</h4>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> 
+</body>
+
+</html>
